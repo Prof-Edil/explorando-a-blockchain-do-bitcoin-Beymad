@@ -2,5 +2,4 @@
 #   `xpub6Cx5tvq6nACSLJdra1A6WjqTo1SgeUZRFqsX5ysEtVBMwhCCRa4kfgFqaT2o1kwL3esB1PsYr3CUdfRZYfLHJunNWUABKftK2NjHUtzDms2`
 trpubkey="tr(xpub6Cx5tvq6nACSLJdra1A6WjqTo1SgeUZRFqsX5ysEtVBMwhCCRa4kfgFqaT2o1kwL3esB1PsYr3CUdfRZYfLHJunNWUABKftK2NjHUtzDms2/100)"
 descriptor=$(bitcoin-cli getdescriptorinfo "$trpubkey" | jq ."descriptor")
-addr=$(eval "bitcoin-cli deriveaddresses $descriptor" | jq .[0])
-printf $addr
+eval "bitcoin-cli deriveaddresses $descriptor" | jq -r .[0]
